@@ -1,25 +1,12 @@
-import { createStore, AnyAction } from 'redux';
-import { MakeStore, createWrapper, HYDRATE } from 'next-redux-wrapper';
+import { createStore, applyMiddleware } from 'redux';
+import { MakeStore, createWrapper } from 'next-redux-wrapper';
+import thunk from 'redux-thunk';
+import mainReducer from './mainReducer';
 
-export interface State {
-  tick: string;
-}
-
-// create your reducer
-const reducer = (state: State = { tick: 'init' }, action: AnyAction) => {
-  switch (action.type) {
-    case HYDRATE:
-      // Attention! This will overwrite client state! Real apps should use proper reconciliation.
-      return { ...state, ...action.payload };
-    case 'TICK':
-      return { ...state, tick: action.payload };
-    default:
-      return state;
-  }
-};
+type AppState = ReturnType<typeof mainReducer>;
 
 // create a makeStore function
-const makeStore: MakeStore<State> = () => createStore(reducer);
+const makeStore: MakeStore<AppState> = () => createStore(mainReducer, applyMiddleware(thunk));
 
 // export an assembled wrapper
-export const wrapper = createWrapper<State>(makeStore);
+export const wrapper = createWrapper<AppState>(makeStore);
