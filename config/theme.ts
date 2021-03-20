@@ -13,6 +13,7 @@ export enum Breakpoints {
 export enum Colors {
   link = '#00f',
   borderLight = '#eeeeee',
+  fieldError = 'red',
 }
 
 export const up = (breakpoint: Breakpoints, vertical = false) =>

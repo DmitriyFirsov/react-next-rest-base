@@ -1,3 +1,5 @@
 import { combineReducers } from 'redux';
 
-export default combineReducers({});
+const emptyReducer = (state = { id: 'test' }) => state;
+
+export default combineReducers({ emptyReducer });

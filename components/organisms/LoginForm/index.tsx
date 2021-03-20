@@ -1,39 +1,41 @@
-import Tabs, { ITabConfig } from '../../molecules/Tabs';
-import { useMemo, useState } from 'react';
-import { LoginFormContainer } from './components';
+import { Formik, Form, FormikHelpers } from 'formik';
 
-enum FormTypes {
-  signIn,
-  signUp,
-  passwordRecovery,
+import { object, string } from 'yup';
+import TextInput from '../../atoms/formFields/Input';
+
+const LoginValidationSchema = object().shape({
+  email: string().email('invalid email').required('field required'),
+  password: string().min(5, ' incorrect password ').required(),
+});
+
+interface IFormValues {
+  email: string;
+  password: string;
 }
 
-const LoginForm = () => {
-  const [form, setForm] = useState<FormTypes>(FormTypes.signIn);
-  const TABS: ITabConfig<FormTypes>[] = useMemo(
-    () =>
-      [
-        {
-          id: FormTypes.signIn,
-          title: 'Sign in',
-        },
-        {
-          id: FormTypes.signUp,
-          title: 'Create an account',
-        },
-        {
-          id: FormTypes.passwordRecovery,
-          title: 'Forgot your password',
-        },
-      ].map((item) => ({ ...item, action: (id) => setForm(id) })),
-    [setForm],
-  );
+const INITIAL_VALUES: IFormValues = {
+  email: '',
+  password: '',
+};
 
+const LoginForm = () => {
   return (
-    <LoginFormContainer>
-      <Tabs tabs={TABS} />
-      {form}
-    </LoginFormContainer>
+    <Formik
+      initialValues={INITIAL_VALUES}
+      onSubmit={(values: IFormValues, { setSubmitting }: FormikHelpers<IFormValues>) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
+        }, 500);
+      }}
+      validationSchema={LoginValidationSchema}
+    >
+      <Form>
+        <TextInput label="email" name="email" />
+        <TextInput label="password" name="password" />
+        <button type="submit">Submit</button>
+      </Form>
+    </Formik>
   );
 };
 

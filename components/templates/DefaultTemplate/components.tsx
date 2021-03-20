@@ -9,5 +9,5 @@ export const Header = styled.header(
     border-bottom: 1px solid ${colors.borderLight};
     align-items: center;
     padding: 1rem;
-  `
+  `,
 );
