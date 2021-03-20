@@ -1,7 +1,5 @@
+import DefaultTemplate from '../components/templates/DefaultTemplate';
+
 export default function Home() {
-  return (
-    <div>
-      Hello world<a>test</a>{' '}
-    </div>
-  );
+  return <DefaultTemplate title={'Main page'} />;
 }
