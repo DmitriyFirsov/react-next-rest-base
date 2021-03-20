@@ -8,7 +8,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "install": "^0.13.0",
     "next": "10.0.9",
     "next-redux-wrapper": "^6.0.2",
     "react": "17.0.1",
@@ -19,6 +18,7 @@
     "typescript": "^4.2.3"
   },
   "devDependencies": {
+    "husky": "4",
     "@types/jest": "^26.0.21",
     "@types/node": "^14.14.35",
     "@types/react": "^17.0.3",
@@ -34,5 +34,16 @@
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
     "ts-jest": "^26.5.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "prettier --write ./"
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 120,
+    "semi": true,
+    "trailingComma": "all"
   }
 }
