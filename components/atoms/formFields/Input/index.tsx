@@ -26,13 +26,15 @@ const ErrorMessage = styled.div(
   `,
 );
 
-const StyledInput = styled.input`
-  width: 100%;
-  padding: 1rem;
-  font-size: 1rem;
-  border-radius: 0.3rem;
-  border: 1px solid rgb(179, 179, 179);
-`;
+const StyledInput = styled.input(
+  ({ theme: { colors } }) => css`
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    border: 1px solid ${colors.fieldBorder};
+  `,
+);
 
 const TextInput = ({ label, name }: IInputProps) => {
   const [field, meta] = useField(name);

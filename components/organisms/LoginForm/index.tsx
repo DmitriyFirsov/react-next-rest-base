@@ -4,8 +4,8 @@ import { object, string } from 'yup';
 import TextInput from 'components/atoms/formFields/Input';
 
 const LoginValidationSchema = object().shape({
-  email: string().email('invalid email').required('field required'),
-  password: string().min(5, ' incorrect password ').required(),
+  email: string().email().required(),
+  password: string().min(5).required(),
 });
 
 interface IFormValues {

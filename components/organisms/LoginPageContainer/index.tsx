@@ -1,6 +1,6 @@
 import Tabs, { ITabConfig } from 'components/molecules/Tabs';
 import { useMemo, useState } from 'react';
-import { LoginFormContainer } from './components';
+import { CenterWrapper, LoginFormContainer } from './components';
 import LoginForm from 'components/organisms/LoginForm';
 
 enum FormTypes {
@@ -31,10 +31,12 @@ const LoginPageContainer = () => {
   );
 
   return (
-    <LoginFormContainer>
-      <Tabs tabs={TABS} />
-      {form === FormTypes.signIn && <LoginForm />}
-    </LoginFormContainer>
+    <CenterWrapper>
+      <LoginFormContainer>
+        <Tabs tabs={TABS} defaultValue={FormTypes.signIn} />
+        {form === FormTypes.signIn && <LoginForm />}
+      </LoginFormContainer>
+    </CenterWrapper>
   );
 };
 

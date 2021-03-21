@@ -12,10 +12,11 @@ export interface ITabConfig<T extends Tid> {
 
 interface ITabsProps<T extends Tid> {
   tabs: ITabConfig<T>[];
+  defaultValue?: ITabConfig<T>['id'];
 }
 
-function Tabs<T extends Tid>({ tabs }: ITabsProps<T>) {
-  const [activeTab, setActiveTab] = useState<ITabConfig<T>['id'] | null>(null);
+function Tabs<T extends Tid>({ tabs, defaultValue }: ITabsProps<T>) {
+  const [activeTab, setActiveTab] = useState<ITabConfig<T>['id'] | null>(() => (defaultValue != null ? defaultValue : null));
 
   const handleClick = (id: ITabConfig<T>['id'], action: ITabConfig<T>['action']) => {
     setActiveTab(id);

@@ -12,8 +12,10 @@ export const TabContainer = styled.div<{ direction?: 'row' | 'column' }>(
   ({ direction = 'row' }) => css`
     display: flex;
     flex-direction: ${direction};
+    width: 100%;
+    justify-content: space-around;
     > * {
-      margin: 0.6rem;
+      padding: 0.6rem;
     }
   `,
 );
