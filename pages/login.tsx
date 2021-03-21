@@ -1,5 +1,5 @@
-import DefaultTemplate from '../components/templates/DefaultTemplate';
-import LoginForm from '../components/organisms/LoginPageContainer';
+import DefaultTemplate from 'components/templates/DefaultTemplate';
+import LoginForm from 'components/organisms/LoginPageContainer';
 
 const Login = () => {
   return (

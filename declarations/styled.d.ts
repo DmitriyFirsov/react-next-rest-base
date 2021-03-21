@@ -1,5 +1,5 @@
 import 'styled-components';
-import { Breakpoints, Colors, up, down, between } from '../config/theme';
+import { Breakpoints, Colors, up, down, between } from 'config/theme';
 
 declare module 'styled-components' {
   export interface DefaultTheme {

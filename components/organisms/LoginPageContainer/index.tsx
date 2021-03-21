@@ -1,7 +1,7 @@
-import Tabs, { ITabConfig } from '../../molecules/Tabs';
+import Tabs, { ITabConfig } from 'components/molecules/Tabs';
 import { useMemo, useState } from 'react';
 import { LoginFormContainer } from './components';
-import LoginForm from '../LoginForm';
+import LoginForm from 'components/organisms/LoginForm';
 
 enum FormTypes {
   signIn,

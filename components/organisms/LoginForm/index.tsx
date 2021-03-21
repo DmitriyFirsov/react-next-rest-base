@@ -1,7 +1,7 @@
 import { Formik, Form, FormikHelpers } from 'formik';
 
 import { object, string } from 'yup';
-import TextInput from '../../atoms/formFields/Input';
+import TextInput from 'components/atoms/formFields/Input';
 
 const LoginValidationSchema = object().shape({
   email: string().email('invalid email').required('field required'),
